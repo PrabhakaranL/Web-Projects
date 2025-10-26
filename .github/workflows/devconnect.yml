@@ -16,18 +16,18 @@ jobs:
       uses: docker/setup-buildx-action@v2
 
     - name: Build frontend
-      run: docker build -t yourdockerhub/frontend:latest ./frontend
+      run: docker build -t prabhalinux/frontend:latest ./frontend
 
     - name: Build backend
-      run: docker build -t yourdockerhub/backend:latest ./backend
+      run: docker build -t prabhalinux/backend:latest ./backend
 
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
     - name: Push images
       run: |
-        docker push yourdockerhub/frontend:latest
-        docker push yourdockerhub/backend:latest
+        docker push prabhalinux/frontend:latest
+        docker push prabhalinux/backend:latest
 
     - name: Deploy to Kubernetes
       run: |
